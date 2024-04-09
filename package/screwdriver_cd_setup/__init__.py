@@ -34,7 +34,7 @@ services:
             URI: http://${ip}:9001
             ECOSYSTEM_UI: http://${ip}:9000
             ECOSYSTEM_STORE: http://${ip}:9002
-            DATASTORE_PLUGIN: sequelize'
+            DATASTORE_PLUGIN: sequelize
             DATASTORE_SEQUELIZE_DIALECT: sqlite
             DATASTORE_SEQUELIZE_STORAGE: /tmp/sd-data/storage.db
             EXECUTOR_PLUGIN: docker
