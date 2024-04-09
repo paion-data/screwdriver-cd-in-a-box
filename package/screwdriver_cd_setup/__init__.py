@@ -28,12 +28,13 @@ services:
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock:rw
             - ./data/:/tmp/sd-data/:rw
+            - ./local.yaml:/usr/src/app/node_modules/screwdriver-cd-api/config/local.yaml
         environment:
             PORT: 80
             URI: http://${ip}:9001
             ECOSYSTEM_UI: http://${ip}:9000
             ECOSYSTEM_STORE: http://${ip}:9002
-            DATASTORE_PLUGIN: sequelize
+            DATASTORE_PLUGIN: sequelize'
             DATASTORE_SEQUELIZE_DIALECT: sqlite
             DATASTORE_SEQUELIZE_STORAGE: /tmp/sd-data/storage.db
             EXECUTOR_PLUGIN: docker
@@ -107,9 +108,9 @@ def get_ip_address():
     ----
     docker-for-mac does not set DOCKER environment variables
     """
-    if os.environ.get('DOCKER_HOST'):
-        url = urlparse(os.environ['DOCKER_HOST'])
-        return url.hostname
+    if os.environ.get('DOCKER_HOST_REMOTE'):
+        url = urlparse(os.environ['DOCKER_HOST_REMOTE'])
+        return url.path
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.connect(("8.8.8.8", 80))
     return sock.getsockname()[0]
