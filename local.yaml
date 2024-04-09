@@ -1,0 +1,9 @@
+# disable coverage plugin
+bookends:
+  default:
+    setup:
+      - scm
+      - screwdriver-cache-bookend
+    teardown:
+      - screwdriver-artifact-bookend
+      - screwdriver-cache-bookend
