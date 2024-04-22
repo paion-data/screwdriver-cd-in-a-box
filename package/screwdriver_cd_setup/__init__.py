@@ -28,7 +28,7 @@ services:
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock:rw
             - ./data/:/tmp/sd-data/:rw
-            - ./local.yaml:/usr/src/app/node_modules/screwdriver-cd-api/config/local.yaml
+            - ./local.yaml:/usr/src/app/node_modules/screwdriver-api/config/local.yaml
         environment:
             PORT: 80
             URI: http://${ip}:9001
